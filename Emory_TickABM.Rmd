@@ -1,0 +1,36 @@
+---
+title: "Emory_TicksABM_Challenge"
+author: "David Civetello, Lynda Bradley, KM Barnett, Aniruddha Belsare"
+output: html_notebook
+---
+
+### NEON Ecological Forecasting Challenge Webpage:
+https://ecoforecast.org/efi-rcn-forecast-challenges/
+
+
+#### Link to Github repository neonfprecast-ticks:
+https://github.com/eco4cast/neon4cast-ticks
+
+#### Eleven tips for working with large data sets:
+https://www.nature.com/articles/d41586-020-00062-z
+
+#### RMarkdown resources:
+https://m-clark.github.io/Introduction-to-Rmarkdown/
+https://rmd4sci.njtierney.com/
+https://bookdown.org/yihui/rmarkdown/
+https://www.rosannavanhespen.nl/thesis_in_rmarkdown/
+https://rmarkdown.rstudio.com/formats.html
+
+#### Github & R:
+https://lab.github.com/
+https://dev.to/lberlin/a-github-guide-for-people-who-don-t-understand-github-n50
+https://ropenscilabs.github.io/actions_sandbox/
+
+#### Version control:
+https://www.britishecologicalsociety.org/wp-content/uploads/2019/06/BES-Guide-Reproducible-Code-2019.pdf
+
+https://happygitwithr.com/
+https://www.r-bloggers.com/2018/05/using-rstudio-and-git-version-control/
+https://www.edureka.co/blog/git-tutorial/
+
+This is the best: https://github.com/pcottle/learnGitBranching
