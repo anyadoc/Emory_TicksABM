@@ -34,3 +34,71 @@ https://www.r-bloggers.com/2018/05/using-rstudio-and-git-version-control/
 https://www.edureka.co/blog/git-tutorial/
 
 This is the best: https://github.com/pcottle/learnGitBranching
+
+#### NetLogo
+Style guide
+http://ccl.northwestern.edu/courses/mam-03/styleguide.html
+
+Avoid globals
+https://gist.github.com/nicolaspayette/8051fa9c289897c4bf97c4d6abf3386d
+
+
+
+### ODD: Multi-stage ticks, multihost agent-based model
+
+**Purpose**
+<br>
+MSTMH is an agent-based model of an ecological community comprising of _Ixodes scapularis_ (blacklegged tick) and three vertebrate hosts, white-footed mice _Peromyscus leucopus_, white-tailed deer _Odocoileus virginianus_ and domestic cattle _Bos taurus_. The objective is to simulate the population dynamics of _I. scapularis_, and assess effects of grazing domestic ruminants on abundance of different stages of _I. scapularis_. Our overarching goal is to explore the complex dynamics of host community composition, tick stages and _Borrelia burgdorferi_, and thereby support development of locale specific Lyme disease control strategies.
+<br>
+**Entities, state variables and scales**
+<br>
+_Spatial scale_: MSTMH has a 400 meters by 400 meters (16 hectares) simplified landscape. Each patch is 25 m^2.<br>
+_Temporal scale_: MSTMH has a weekly timestep, and the duration of the simulation is 20 years. First 5 years are for equilibration.<br>
+_Entities_: This model has seven entities: four tick stages (egg, larval, nymphal and adult) and three host species - white-footed mouse, white-tailed deer and domestic cattle.<br>
+_State variables_: The larval (**lticks**) and nymphal (**nticks**) stages have six state variables each: _aiw_ (age in weeks), _loc_ (location: patch id or host id), _hs?_ (boolean: true if seeking host), _fe?_ (boolean: true if fully engorged), _toh_ (time attached to the current host) and _moltp_ (counter for time since fully engorged). The adult (**aticks**) stage has the same state variables as the other two stages with the exception of _moltp_. Instead it has a state variable _rpot_ (reproductive potential - number of eggs produced). The egg stage does not have any state variables.
+<br> 
+Mice in the model have three state variables: _home-patch_, _hrr_ (home-range radius) and _tc_ (tick carrying capacity). Other host species, deer and cattle, have only one state variable, _tc_.
+<br>
+**Process overview and scheduling**
+
+_Mice population dynamics_:
+Mice are randomly distributed in the model landscape. We do not simulate births and deaths in the model mice population. Instead, mice density, and therefore mice population, is set to fluctuate quarterly. A random value between 25 and 35 is selected every four months to set the density of mice per hectare. <mark> (Reference / supporting literature?).
+
+Each mouse has a home-patch and a home-range. The home-range is set between 0.1 hectare (1000 m^2) and 1.6 hectare (16000 m^2) <mark> (Reference?).Every time step, each mouse accesses upto seven random patches within its homerange.
+
+###### Figure 1: Tick stages and hosts ######
+
+![Figure 1](https://github.com/anyadoc/Emory_TicksABM/raw/main/TickStageSchedule.PNG){width=50%}
+<br>
+The larval and nymphal peak activity periods do not overlap.
+
+Almost without exception, macroparasites are aggregated across their host populations - majority of the parasite population is concentrated into a minority of the host population. Devevey_2012 report that most larvae (79.6 %) and most nymphs (79.8 %) at their study sites in southeastern Pennsylvanis were attached to a minority of mice (46.9 % and 25.4 % for larval and nymphal stages, respectively). The distribution of ticks on mice follows a negative binomial distribution (larval distribution, k = 0?862,P = 0?84; nymphal distribution, k = 0?299, P = 0?14) that strongly supports a non-random distribution.
+Heterogeneity among individual hosts explains the aggregation of ectoparasites-supported by repeatability of ticks on mice over time such that highly parasitized mice remain highly parsitized throughout the season. <mark> Majority of ticks parasitized a consistent set of mice throughout the activity seasons.
+Also, the entire cohort of ticks feeding on a mouse is replaced every 3-5 days (Brunner et al. 2011)
+<br>
+
+###### Figure 2: From Devevey & Brisson, 2012 - larval aggregation ######
+
+![Figure 2](https://github.com/anyadoc/Emory_TicksABM/raw/main/larvalburdenmice.PNG)
+<br>
+
+###### Figure 3: From Devevey & Brisson, 2012 - nymphal aggregation ######
+
+![Figure 3](https://github.com/anyadoc/Emory_TicksABM/raw/main/nymphalburdenmice.PNG)
+
+https://www.nytimes.com/2017/08/02/science/ticks-lyme-disease-foxes-martens.html?mwrsm=Email
+
+####Notes and references####
+
+<mark> _I. scapularis_ crawls no more than a few meters during any of its life stages (Daniels and Fish 1990,Falco and Fish 1991, Daniels et al. 1996).
+<br>
+
+_I. scapularis_ is a three-host tick, each postembryonic life stage (larva, nymph, and adult) requires a single blood meal to molt
+to the next life stage (Sonenshine 1991).
+<br>
+
+Devevey_2012 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3856707/
+Authors have examined the aggregation of immature _I. scapularis_ ticks (larvae and nymphs) both while seeking a host and while attached to white-footed mice. 
+
+<br>
+
