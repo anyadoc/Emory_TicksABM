@@ -7,6 +7,12 @@ output: html_notebook
 ### NEON Ecological Forecasting Challenge Webpage:
 https://ecoforecast.org/efi-rcn-forecast-challenges/
 
+<mark> To forecast total _Ixodes scapularis_ and _Amblyomma americanum_ nymphs each epidemiological week (Sun-Sat) at a set of NEON plots within NEON sites. 
+
+### Important dates for the forecasting challenge
+<mark> Training data available until Jan 31, 2021
+<br>
+<mark> 1st Forecast submission March 31, 2021
 
 #### Link to Github repository neonfprecast-ticks:
 https://github.com/eco4cast/neon4cast-ticks
@@ -16,6 +22,8 @@ https://www.nature.com/articles/d41586-020-00062-z
 
 #### RMarkdown resources:
 https://m-clark.github.io/Introduction-to-Rmarkdown/
+<br>
+
 https://rmd4sci.njtierney.com/
 https://bookdown.org/yihui/rmarkdown/
 https://www.rosannavanhespen.nl/thesis_in_rmarkdown/
@@ -88,7 +96,7 @@ Also, the entire cohort of ticks feeding on a mouse is replaced every 3-5 days (
 
 https://www.nytimes.com/2017/08/02/science/ticks-lyme-disease-foxes-martens.html?mwrsm=Email
 
-####Notes and references####
+#### Notes and references
 
 <mark> _I. scapularis_ crawls no more than a few meters during any of its life stages (Daniels and Fish 1990,Falco and Fish 1991, Daniels et al. 1996).
 <br>
