@@ -1,7 +1,9 @@
 ---
 title: "Emory_TicksABM_Challenge"
 author: "David Civetello, Lynda Bradley, KM Barnett, Aniruddha Belsare"
-output: html_notebook
+output:
+  md_document:
+    variant: markdown_github
 ---
 
 ### NEON Ecological Forecasting Challenge Webpage:
@@ -98,7 +100,7 @@ https://www.nytimes.com/2017/08/02/science/ticks-lyme-disease-foxes-martens.html
 
 #### Notes and references
 
-<mark> _I. scapularis_ crawls no more than a few meters during any of its life stages (Daniels and Fish 1990,Falco and Fish 1991, Daniels et al. 1996).
+<mark> _I. scapularis_ crawls no more than a few meters during any of its life stages (Daniels and Fish 1990, Falco and Fish 1991, Daniels et al. 1996).
 <br>
 
 _I. scapularis_ is a three-host tick, each postembryonic life stage (larva, nymph, and adult) requires a single blood meal to molt
