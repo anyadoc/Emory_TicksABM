@@ -210,7 +210,7 @@ to go
     set lphsl round (phsl * 0.01)
     set hphsl round (phsl * 0.25)
     let hsl lticks with [ fe? = FALSE ]
-    ifelse (weekid = lhsp and weekid < (lhsp + 4))
+    ifelse (weekid >= lhsp and weekid < (lhsp + 4))                       ;####bug detected 24 Nov2020 weekid = lhsp changed to weekid >= lhsp
     [ ask n-of hphsl hsl [
       set hs? TRUE
       ]
