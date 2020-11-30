@@ -264,7 +264,7 @@ to go
     let lphsn round (phsn * 0.1)
     let hphsn round (phsn * 0.25)
     if (weekid > 13 and weekid < 45) [
-      ifelse (weekid >= nhsp and weekid < (nhsp + 4))
+      ifelse (weekid >= (nhsp - 1) and weekid < (nhsp + 4))
       [ ask n-of hphsn hsn [
         set hs? TRUE
         ]
