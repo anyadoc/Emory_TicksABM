@@ -14,8 +14,10 @@ globals [
   eng-aticks                  ;counter for engorged adult ticks
   ]
 patches-own [
-  fp                 ;fp = 1 for forest
-  pp                 ;pp = 1 for grass
+  ptype              ;"fp" for forest patches and "pp" for grass patches
+  ;fp                 ;fp = 1 for forest
+  ;pp                 ;pp = 1 for grass
+  eggs-here           ;###
   ]
 breed [ cows cow ]
 breed [ mice mouse ]
@@ -23,7 +25,7 @@ breed [ deer a-deer ]
 breed [ aticks atick ]
 breed [ nticks ntick ]
 breed [ lticks ltick ]
-breed [ eggs egg ]
+;breed [ eggs egg ]
 
 mice-own [
   hr                  ;home-range radius
@@ -71,16 +73,20 @@ aticks-own [
   toh
   rpot                 ;reproduction potential
 ]
-eggs-own []
+;eggs-own []
 
 to setup
   ca
   ask patches [
     ifelse (pycor >= 77)
     [ set pcolor green + 3
-      set fp 1 ]
+      set ptype "fp"        ;###
+      ;set fp 1 ]
+    ]
     [ set pcolor green + 1
-      set pp 1 ]
+      set ptype "pp"
+      ;set pp 1 ]
+    ]
     ]
 ;  ask n-of (count patches / 2) patches [
 ;    if (pycor > 70) [
@@ -93,7 +99,7 @@ to setup
 ;      ]
 ;    ]
 ;  let green-patches patches with [ pp = 1 ]
-  let forest-patches patches with [ fp = 1 ]
+  let forest-patches patches with [ ptype = "fp" ] ;[ fp = 1 ]
   ;ask n-of 5 green-patches[  ;24April17 inactivated
     ;sprout-cows 1[
       ;set shape "cow"
@@ -178,7 +184,7 @@ to go
       ]
       ]
     [if (mice-newpop - total-mice) > 0 [
-        ask n-of ((mice-newpop - total-mice) / 2) patches with [ pp = 1 ] [
+      ask n-of ((mice-newpop - total-mice) / 2) patches with [ ptype = "pp" ] [ ;[ pp = 1 ] [  ;###
           sprout-mice 1 [
             set shape "mouse side"
             set size 0.5
@@ -348,18 +354,25 @@ to go
       ]
     if weekid > 22 and weekid < 27 [
       if (fe? = TRUE and toh = -999) [
-        hatch-eggs round (rpot * 0.83) [
-          ht
-          ]
-        die
+        let n-eggs rpot * 0.83
+        ask patch-here [                 ;###
+          set eggs-here n-eggs           ;###
+        ]
+;        hatch-eggs round (rpot * 0.83) [
+;          ht
+;          ]
+;        die
         ]
       ]
     ]
   ;-----------------------------------------------------------------
   if (weekid = 26) [
-    ask eggs [
-      ask patch-here [
-        sprout-lticks 1 [
+    ;ask eggs [                                     ;###
+    let egg-patches patches with [ eggs-here > 0 ]  ;###
+    ask egg-patches [                               ;###
+      sprout-lticks eggs-here [                     ;###
+      ;ask patch-here [
+        ;sprout-lticks 1 [
           set aiw 1
           set loc patch-here
           set fe? FALSE
@@ -368,8 +381,8 @@ to go
           set pcolor red
           ]
         ]
-      die
-      ]
+      ;die
+      ;]
     ]
   ;-----------------------------------------------------------------------
   ask mice [
@@ -417,7 +430,7 @@ to go
   ask deer [
     let twho who
     repeat 7
-    [ move-to one-of patches with [ pp = 1 ]
+    [ move-to one-of patches with [ ptype = "pp" ] ;[ pp = 1 ]
       ltick-inf
       ntick-inf
       atick-inf
@@ -430,7 +443,7 @@ to go
       entick-dep
       eltick-dep
       ]
-    move-to one-of patches with [ fp = 1 ]
+    move-to one-of patches with [ ptype = "fp" ] ;[ fp = 1 ]
     ]
   ask n-of (count mice / 5) mice [
     ht
@@ -672,7 +685,7 @@ TEXTBOX
 514
 668
 567
-> model landscape size is set to 16 hectares (400 meters by 400 meters)\n> model runs for 20 years (240 months/960 weeks)\n\n
+> model landscape size is set to 16 hectares (400 meters by 400 meters)\n> model runs for 10 years\n\n
 15
 105.0
 1
@@ -953,17 +966,6 @@ false
 "" ""
 PENS
 "default" 1.0 0 -16777216 true "" "plot count aticks with [fe? = FALSE and hs? = TRUE]"
-
-MONITOR
-1102
-237
-1176
-282
-NIL
-count eggs
-17
-1
-11
 
 MONITOR
 1193
